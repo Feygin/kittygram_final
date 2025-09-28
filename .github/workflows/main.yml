@@ -1,9 +1,7 @@
 name: Main Kittygram workflow
 
 on:
-  push:
-    branches:
-      - main
+  push: {}
 
 jobs:
   tests:
@@ -147,6 +145,7 @@ jobs:
           push: true
           tags: feygin/kittygram_gateway:latest
   deploy:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: 
       # Дождёмся билда всех образов kittygram
